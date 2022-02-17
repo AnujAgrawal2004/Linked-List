@@ -1,0 +1,143 @@
+package com.company;
+class LL
+{
+   private Node head;
+   private Node tail;
+   int size=0;
+   public LL()
+   {
+       size=0;
+   }
+ public void insertAtFirst(int val)
+ {
+     Node node =new Node(val);
+     node.next=head;
+     head=node;
+     if(tail==null)
+     {
+         tail=head;
+     }
+     size+=1;
+ }
+ public void insert(int val,int index)
+ {
+     if(index==0)
+     {
+         insertAtFirst(val);
+         return;
+     }
+     if(index==size)
+     {
+         InsertAtLast(val);
+         return;
+     }
+     Node temp=head;
+     for(int i=0;i<index;i++)
+     {
+         temp=temp.next;
+     }
+     Node node=new Node(val,temp.next);
+     temp=node;
+     size++;
+ }
+ public void display()
+ {
+     if(head==null)
+     {
+         System.out.println("Empty linked list");
+     }
+     else {
+         Node temp=head;
+         while(temp!=null)
+         {
+             System.out.print(temp.data+"->");
+             temp=temp.next;
+         }
+         System.out.print("End");
+     }
+ }
+ public void InsertAtLast(int val)
+ {
+     if(tail==null)
+     {
+         insertAtFirst(val);
+         return;
+     }
+     Node node =new Node(val);
+     tail.next=node;
+     tail=node;
+     size++;
+ }
+ public int deleteFirst()
+ {
+     int val=head.data;
+     head=head.next;
+     if(head==null)
+     {
+         tail=null;
+     }
+     size--;
+     return val;
+ }
+ public Node get(int index)
+ {
+     Node node=head;
+     for (int i = 0; i <index ; i++) {
+        node=node.next;
+     }
+     return node;
+ }
+ public int deletelast()
+ {
+     if(size<=1) {
+         return deleteFirst();
+     }
+         Node secondlast=get(size-2);
+     int val=tail.data;
+     tail=secondlast;
+     tail.next=null;
+     size--;
+return val;
+ }
+ public int delete(int index) {
+     if (index == 0) {
+         return deleteFirst();
+     }
+     if (index == size - 1) {
+         return deletelast();
+     } else {
+         Node prev = get(index - 1);
+         int val = prev.next.data;
+         prev.next = prev.next.next;
+         return val;
+     }
+ }
+ public Node find(int value)
+ {
+     Node node=head;
+    while(node!=null)
+    {
+        if(node.data==value)
+        {
+            return node;
+        }
+        node=node.next;
+    }
+    return null;
+ }
+   private class Node
+   {
+       private int data;
+       private Node next;
+
+       public Node(int data) {
+           this.data = data;
+       }
+       public Node(int data,Node next)
+       {
+           this.data=data;
+           this.next=next;
+       }
+   }
+
+}
