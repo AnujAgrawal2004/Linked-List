@@ -1,0 +1,15 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	 LL list =new LL();
+     list.insertAtFirst(10);
+     list.insertAtFirst(20);
+     list.insertAtFirst(30);
+     list.InsertAtLast(40);
+     list.insert(100,2);
+     list.delete(2);
+     list.display();
+    }
+}
