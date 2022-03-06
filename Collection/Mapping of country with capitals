@@ -1,0 +1,17 @@
+package com.company;
+
+import java.util.HashMap;
+
+public class MapCountryAndCapital {
+    public HashMap saveCountryCapital(String CountryName, String Capital) {
+        HashMap m1 = new HashMap();
+        m1.put(CountryName, Capital);
+        return m1;
+    }
+
+    public static void main(String[] args) {
+        MapCountryAndCapital m = new MapCountryAndCapital();
+        System.out.println(m.saveCountryCapital("India", "Delhi"));
+        System.out.println(m.saveCountryCapital("Japan", "Tokyo"));
+    }
+}
