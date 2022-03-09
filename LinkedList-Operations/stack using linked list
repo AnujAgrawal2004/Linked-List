@@ -1,0 +1,64 @@
+package com.company;
+
+public class StackLL {
+    Node top;
+
+    class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+        }
+    }
+
+    public boolean isEmpty() {
+        if (top == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int push(int data) {
+        Node newnode = new Node(data);
+        if (top == null) {
+            top = newnode;
+            return data;
+        }
+        newnode.next = top;
+        top = newnode;
+        return data;
+    }
+    public int pop()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Empty");
+            return 0;
+        }
+        else
+        {
+            int ans=top.data;
+            top=top.next;
+            return ans;
+        }
+    }
+    public void display()
+    {
+        Node temp=top;
+        while(temp!=null)
+        {
+            System.out.println(temp.data);
+            temp=temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        StackLL st=new StackLL();
+        st.push(30);
+        st.push(20);
+        st.push(10);
+        st.display();
+    }
+}
