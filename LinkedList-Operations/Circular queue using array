@@ -1,0 +1,54 @@
+package com.company;
+class CircularQueue
+{
+    int front,rear;
+    int arr[];
+    int size;
+    public CircularQueue(int size)
+    {
+        this.size=size;
+        front=-1;
+        rear=-1;
+        arr=new int[size];
+    }
+    public boolean isEmpty()
+    {
+        return(front==-1);
+    }
+    public boolean isFull()
+    {
+        return((rear+1)%size==front);
+    }
+    public void enqueue(int data)
+    {
+        if(isFull())
+        {
+            System.out.println("Overflow");
+        }
+            if(front==-1)
+            {
+                front=0;
+            }
+            rear=(rear+1)%size;
+            arr[rear]=data;
+        }
+        public void dequeue()
+        {
+            if(isEmpty())
+            {
+                System.out.println("Underflow");
+            }
+            else {
+                if(front==rear)
+                {
+                    System.out.println(arr[front]);
+                    rear=front=-1;
+                }
+                front=(front+1)%size;
+            }
+        }
+        public void peek()
+        {
+            System.out.println(arr[front]);
+        }
+    }
