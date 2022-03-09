@@ -1,0 +1,53 @@
+package com.company;
+
+public class QueueLL {
+    Node front;
+    Node rear;
+    class Node
+    {
+        int data;
+        Node next;
+        public Node(int data)
+        {
+            this.data=data;
+        }
+    }
+    public QueueLL()
+    {
+        front=null;
+        rear=null;
+    }
+    public boolean isEmpty()
+    {
+        if(front==null)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void Enqueue(int data)
+    {
+        Node newnode=new Node(data);
+        if(isEmpty())
+        {
+           front=rear=newnode;
+        }
+        else {
+            rear.next=newnode;
+            rear=rear.next;
+        }
+    }
+    public void Dequeue()
+    {
+        if(isEmpty())
+        {
+            System.out.println("Underflow");
+        }
+        else {
+            System.out.println(front.data);
+            front=front.next;
+        }
+    }
+}
